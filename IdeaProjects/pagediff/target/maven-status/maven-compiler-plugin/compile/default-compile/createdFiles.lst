@@ -1,0 +1,6 @@
+connUtil\ConnectUtil.class
+bean\Product.class
+dao\AddProduct.class
+dao\QueryProdect.class
+com\pageinfo\AddServlet.class
+com\pageinfo\FindServlet.class
