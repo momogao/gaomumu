@@ -2,6 +2,7 @@ package com.atguigu.springcloud.controller;
 
 import java.util.List;
 
+import com.atguigu.springcloud.service.DeptServiceClientApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -15,7 +16,7 @@ import com.atguigu.springcloud.entities.Dept;
 import com.atguigu.springcloud.service.DeptService;
 
 @RestController
-public class DeptController
+public class DeptServiceClient implements DeptServiceClientApi
 {
 	@Autowired
 	private DeptService service;

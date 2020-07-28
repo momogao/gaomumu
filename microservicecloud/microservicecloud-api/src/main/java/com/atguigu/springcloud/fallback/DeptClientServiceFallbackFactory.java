@@ -1,7 +1,8 @@
-package com.atguigu.springcloud.service;
+package com.atguigu.springcloud.fallback;
 
 import java.util.List;
 
+import com.atguigu.springcloud.service.DeptServiceClientApi;
 import org.springframework.stereotype.Component;
 
 import com.atguigu.springcloud.entities.Dept;
@@ -9,17 +10,16 @@ import com.atguigu.springcloud.entities.Dept;
 import feign.hystrix.FallbackFactory;
 
 @Component // 不要忘记添加，不要忘记添加
-public class DeptClientServiceFallbackFactory implements FallbackFactory<DeptClientService>
+public class DeptClientServiceFallbackFactory implements FallbackFactory<DeptServiceClientApi>
 {
 	@Override
-	public DeptClientService create(Throwable throwable)
+	public DeptServiceClientApi create(Throwable throwable)
 	{
-		return new DeptClientService() {
+		return new DeptServiceClientApi() {
 			@Override
 			public Dept get(int id)
 			{
-				return new Dept().setId(id).setName("该ID：" + id + "没有没有对应的信息,Consumer客户端提供的降级信息,此刻服务Provider已经关闭")
-						.setNum(0);
+				return null;
 			}
 
 			@Override
