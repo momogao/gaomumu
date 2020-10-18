@@ -35,6 +35,10 @@ public class UserController {
     public String getUserInfo(){
         return "userinfo";
     }
+    @RequestMapping("/userinfo1")
+    public String getUserInfo1(){
+        return "userinfo1";
+    }
 
     @RequestMapping("/userlist")
     @RequiresPermissions("user:list")
