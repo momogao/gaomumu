@@ -20,7 +20,7 @@ public interface UserDao {
 
     List<User> selectAll();
 
-    User selectByUsernamePass(@Param("username") String username, @Param("password") String password);
+    User selectByUsernamePass(@Param("userName") String username, @Param("passWord") String password);
 
-    User selectByUsername(@Param("username") String username);
+    User selectByUserName(@Param("userName") String username);
 }

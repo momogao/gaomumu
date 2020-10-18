@@ -53,7 +53,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User selectByUsername(String username) {
-        return userMapper.selectByUsername(username);
+    public User selectByUserName(String username) {
+        return userMapper.selectByUserName(username);
     }
 }

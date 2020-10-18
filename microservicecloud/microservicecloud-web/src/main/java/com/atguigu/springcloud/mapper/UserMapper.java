@@ -22,10 +22,9 @@ public interface UserMapper {
     @Select("Select * from user")
     List<User> selectAll();
 
-    @Select("Select * from user where username = #{username} and password = #{password}")
-    User selectByUsernamePass(@Param("username") String username, @Param("password") String password);
+    @Select("Select * from user where username = #{userName} and password = #{passWord}")
+    User selectByUsernamePass(@Param("userName") String username, @Param("passWord") String password);
 
-    @Select("Select * from user where username = #{username}")
-
-    User selectByUsername(@Param("username") String username);
+    @Select("Select * from user where username = #{userName}")
+    User selectByUserName(@Param("userName") String username);
 }

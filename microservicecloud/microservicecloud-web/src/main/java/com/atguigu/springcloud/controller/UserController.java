@@ -4,6 +4,7 @@ import com.atguigu.springcloud.feign.DeptServiceClient;
 import com.atguigu.springcloud.model.User;
 import com.atguigu.springcloud.service.UserService;
 import com.github.pagehelper.PageInfo;
+import com.netflix.client.http.HttpRequest;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class UserController {
@@ -26,6 +29,11 @@ public class UserController {
     public User getUserById(int id){
         User user = userService.selectByPrimaryKey(id);
         return user;
+    }
+
+    @RequestMapping("/userinfo")
+    public String getUserInfo(){
+        return "userinfo";
     }
 
     @RequestMapping("/userlist")
@@ -54,7 +62,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/userupdateoradd", method = RequestMethod.POST)
-    public String userUpdateOrAdd(User user){
+    public String userUpdateOrAdd(User user, HttpServletRequest request){
+
+        String firstName = request.getParameter("firstname");
         if(user.getId() == 0){
             userService.insertSelective(user);
         } else {
